@@ -52,6 +52,6 @@ A seguir estão listados os principais recursos empregados no desenvolvimento de
 
 * [Visual Studio Code](https://code.visualstudio.com/) - Ambiente de Desenvolvimento Integrado
 * [Git](https://git-scm.com/) - Sistema de controle de versão
-* [Github]((https://github.com/)) - Plataforma de hospedagem e colaboração em projetos de software
+* [Github](https://github.com/) - Plataforma de hospedagem e colaboração em projetos de software
 * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) (Extensão VS Code) - Servidor web para desenvolvimento local
 * [http.server](https://docs.python.org/3/library/http.server.html) - Servidor web simples incluso na biblioteca padrão do Python
