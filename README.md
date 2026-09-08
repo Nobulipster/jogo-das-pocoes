@@ -5,8 +5,6 @@
 * [Introdução](#introdução)
 * [Instruções de Como Jogar](#instruções-de-como-jogar)
 * [Recursos Utilizados](#recursos-utilizados)
-* [Objetivo da Aula](#objetivo-da-aula)
-* [Referências e Materiais de Apoio](#referências-e-materiais-de-apoio)
 
 ## Introdução
 
