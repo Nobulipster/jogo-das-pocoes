@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo das Poções</title>
+        <link rel="shortcut icon" type="imagex/png" href="./icon.ico">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="conteiner">
+            <header>
+                <h1>Jogo das Poções</h1>        
+                <img src="potion-title-logo.png" alt="Logo Jogo das Poções" width="100" height="100">
+                <p>Bem-vindo, <b>Mestre das Poções</b>!</p>
+            </header>
+            <hr>
+
+            <!-- Placar do Jogo -->
+            <section class="placar">
+                <p>🟢 Problemas Resolvidos: <strong id="pontos-sucesso">0</strong> / 3</p>
+                <p>🔴 Problemas Não Resolvidos: <strong id="pontos-falha">0</strong> / 3</p>
+            </section>
+            <hr>
+
+            <!-- Área do Problema -->
+            <section class="area-problema">
+                <h2>O Cliente Precisa de Ajuda!</h2>
+                <p id="texto-problema">Aguardando o cliente entrar na loja...</p>
+            </section>
+            <hr>
+
+            <!-- Prateleira com os 10 Ingredientes -->
+            <section class="area-ingredientes">
+                <h2>Prateleira de Ingredientes</h2>
+                <p><em>Passe o mouse para ver os detalhes. Arraste 2 ingredientes para o caldeirão.</em></p>
+                <div class="prateleira" id="prateleira">
+                    <div class="ingrediente" draggable="true" id="ing-1" title="Descrição do ingrediente 1">Ingrediente 1</div>
+                    <div class="ingrediente" draggable="true" id="ing-2" title="Descrição do ingrediente 2">Ingrediente 2</div>
+                    <div class="ingrediente" draggable="true" id="ing-3" title="Descrição do ingrediente 3">Ingrediente 3</div>
+                    <div class="ingrediente" draggable="true" id="ing-4" title="Descrição do ingrediente 4">Ingrediente 4</div>
+                    <div class="ingrediente" draggable="true" id="ing-5" title="Descrição do ingrediente 5">Ingrediente 5</div>
+                    <div class="ingrediente" draggable="true" id="ing-6" title="Descrição do ingrediente 6">Ingrediente 6</div>
+                    <div class="ingrediente" draggable="true" id="ing-7" title="Descrição do ingrediente 7">Ingrediente 7</div>
+                    <div class="ingrediente" draggable="true" id="ing-8" title="Descrição do ingrediente 8">Ingrediente 8</div>
+                    <div class="ingrediente" draggable="true" id="ing-9" title="Descrição do ingrediente 9">Ingrediente 9</div>
+                    <div class="ingrediente" draggable="true" id="ing-10" title="Descrição do ingrediente 10">Ingrediente 10</div>
+                </div>
+            </section>
+
+            <!-- Área de Mistura -->
+            <section class="area-caldeirao">
+                <h2>Caldeirão</h2>
+                <div id="caldeirao" class="caldeirao-zona">
+                    <p>Jogue os ingredientes aqui</p>
+                </div>
+                <button id="btn-misturar">Misturar Poção!</button>
+            </section>
+            <hr>
+
+            <!-- Botões de Controle -->
+            <section class="controles">
+                <button id="btn-como-jogar">Como Jogar</button>
+                <button id="btn-ir-casa" onclick="reiniciarJogo()">Ir Para Casa!</button>
+            </section>
+            <hr>
+
+            <!-- Rodapé -->
+            <footer>
+                <p>
+                    Curioso sobre as antigas artes mágicas? Visite a página sobre 
+                    <a href="https://pt.wikipedia.org/wiki/Alquimia" target="_blank">Alquimia na Wikipedia</a>.
+                </p>
+            <p><b>Desenvolvido por:</b> Felipe Crisóstomo</p>
+            <p><b>Copyright:</b> 2026</p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
