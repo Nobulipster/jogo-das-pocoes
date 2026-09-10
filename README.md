@@ -55,3 +55,12 @@ A seguir estão listados os principais recursos empregados no desenvolvimento de
 * [Github](https://github.com/) - Plataforma de hospedagem e colaboração em projetos de software
 * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) (Extensão VS Code) - Servidor web para desenvolvimento local
 * [http.server](https://docs.python.org/3/library/http.server.html) - Servidor web simples incluso na biblioteca padrão do Python
+
+## Informações Requisitadas
+
+{
+"nome": "Jogo das Poções",
+"descricao": "No Jogo das Poções, o jogador assume o papel do Mestre das Poções do Rei. Todos os dias, o Rei surge no seu laboratório com problemas inusitados — desde calvície mágica até dores de estômago causadas pela falta da visícula biliar. Assim, o jogador deve usar o seu conhecimento (e um pouco de dedução) para combinar os ingredientes certos no seu caldeirão e criar a poção perfeita para cada situação. *Mas cuidado!* Misturar as coisas erradas pode piorar ainda mais a vida do Rei.",
+"autores": "Felipe Crisóstomo Silva Oliveira",
+"turma": "10A",
+}
