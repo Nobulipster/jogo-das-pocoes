@@ -64,19 +64,7 @@ function mostrarModal(titulo, mensagem, callback = null) {
     modalJogo.classList.remove("modal-oculto");
 }
 
-document.getElementById("btn-como-jogar").addEventListener("click", () => {
-    mostrarModal(
-        "📜 REGRAS DO JOGO", 
-        "<ul style='text-align: left; line-height: 1.6;'>" +
-        "<li><b>Analise:</b> Leia o problema do cliente.</li>" +
-        "<li><b>Prepare:</b> Arraste 2 ingredientes para o caldeirão.</li>" +
-        "<li><b>Ação:</b> Clique em 'Misturar Poção!'.</li>" +
-        "</ul>" +
-        "Alcance <b>3 Problemas Resolvidos</b> para vencer!"
-    );
-});
-
-// O que acontece ao clicar no botão "Continuar" do modal
+// O que acontece ao clicar no botão Continuar do modal
 btnFecharModal.addEventListener("click", () => {
     modalJogo.classList.add("modal-oculto");
     if (acaoAposModal) {
@@ -153,7 +141,7 @@ function adicionarAoCaldeirao(id) {
     const imagemSrc = ingredienteOriginal.querySelector("img").src;
     const nomeTexto = ingredienteOriginal.querySelector("span").textContent;
     
-    // Cria um HTML injetável para o slot, mantendo o visual de RPG
+    // Cria um HTML injetável para o slot
     const conteudoSlot = `
         <img src="${imagemSrc}" alt="${nomeTexto}" style="width: 50px; height: 50px; object-fit: contain;">
         <span style="font-size: 12px; font-weight: bold; color: #46332d; text-align: center;">${nomeTexto}</span>
@@ -178,7 +166,7 @@ function limparCaldeirao() {
 // Valida a poção quando clica no botão "Misturar Poção"
 btnMisturar.addEventListener("click", () => {
     if (ingredientesNoCaldeirao.length !== 2) {
-        alert("Para fazer uma poção, o caldeirão precisa de exatamente 2 ingredientes!");
+        mostrarModal("ATENÇÃO!", "Para fazer uma poção, o caldeirão precisa de exatamente 2 ingredientes!");
         return;
     }
 
@@ -205,13 +193,13 @@ btnMisturar.addEventListener("click", () => {
 
 function verificarFimDeJogo() {
     if (pontosSucesso >= 3) {
-        mostrarModal("VITÓRIA!", "Você é o maior Mestre das Poções! Emprego garantido!", iniciarJogo);
-        iniciarJogo(); // Reinicia
+        mostrarModal("VITÓRIA!", "Você é o(a) maior Mestre das Poções! Emprego garantido!", iniciarJogo);
+        iniciarJogo();
     } else if (pontosFalha >= 3) {
-        mostrarModal("DERROTA!", "O Rei revogou sua licença de Alquimista. Você foi demitido!", iniciarJogo);
-        iniciarJogo(); // Reinicia
+        mostrarModal("DERROTA!", "O Rei revogou sua licença de Alquimista. Você foi demitido(a)!", iniciarJogo);
+        iniciarJogo(); 
     } else {
-        // Se ainda não acabou o jogo, limpa o caldeirão e sorteia o próximo problema
+        // Se ainda não acabou o jogo
         limparCaldeirao();
         sortearProblema();
     }
@@ -219,13 +207,21 @@ function verificarFimDeJogo() {
 
 // Botão Ir Para Casa
 function reiniciarJogo() {
-    mostrarModal("Você foi para casa tirar uma soneca e deixou o Rei esperando...");
+    mostrarModal("Fim de Expediente!",
+                 "Você foi para casa tirar uma soneca e deixou o Rei esperando...");
     iniciarJogo();
 }
 
-// Botão Como Jogar
 document.getElementById("btn-como-jogar").addEventListener("click", () => {
-    mostrarModal("REGRAS:\n 1. Leia o problema.\n2. Arraste 2 ingredientes até o caldeirão.\n3. Clique em 'Misturar Poção!'.\n\nAlcance 3 Problemas Resolvidos para vencer!");
+    mostrarModal(
+        "📜 REGRAS DO JOGO", 
+        "<ul style='text-align: left; line-height: 1.6;'>" +
+        "<li><b>Analise:</b> Leia o problema do Rei.</li>" +
+        "<li><b>Prepare:</b> Arraste 2 ingredientes para o caldeirão.</li>" +
+        "<li><b>Ação:</b> Clique em 'Misturar Poção!'.</li>" +
+        "</ul>" +
+        "Alcance <b>3 Problemas Resolvidos</b> para vencer!"
+    );
 });
 
 window.onload = iniciarJogo;

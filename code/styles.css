@@ -2,13 +2,17 @@
     text-align: center;
     font-size: 16px;
     margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .layout-principal {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: stretch;
     margin: 20px 0;
+    flex: 1;
 }
 
 .area-ingredientes {
@@ -29,6 +33,7 @@
 }
 
 .ingrediente {
+    position: relative;
     background-color: #fff;
     padding: 5px;
     border: 1px solid #ccc;
@@ -48,12 +53,44 @@
     pointer-events: none;
 }
 
+.ingrediente::after {
+    content: attr(data-descricao);
+    position: absolute;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #46332d;
+    color: #f0eada;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: 2px solid #8b5a2b;
+    
+    /* Regras de tamanho e quebra de texto */
+    width: max-content;
+    max-width: 180px; 
+    white-space: normal; 
+    
+    /* Efeito de esconder o balãozinho no começo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Mostra o balãozinho com animação suave quando o mouse passar por cima */
+.ingrediente:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 .conteudo-jogo {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-height: 75vh;
+    gap: 15px;
 }
 
 .painel-info {
@@ -75,24 +112,22 @@
     text-align: center;
 }
 
-.caldeirao-zona {
-    height: 150px;
-    max-width: 500px;
-    width: 250px;
-    margin: 0 auto 10px auto;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50% 50% 10px 10px;
-}
-
 /* Container que deixa slots e caldeirão na mesma linha */
 .wrapper-caldeirao {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+}
 
-    margin-bottom: 15px;
+.caldeirao-zona {
+    height: 150px;
+    max-width: 500px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% 50% 10px 10px;
 }
 
 /* Quadrados onde as imagens dos ingredientes vão aparecer */
@@ -147,6 +182,11 @@ button:hover {
     background-color: #17D;
 }
 
+.controles {
+    margin-top: auto; 
+    padding-bottom: 10px;
+}
+
 
 /* ESTILOS DO MODAL */
 #modal-jogo {
@@ -155,7 +195,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,7 +223,6 @@ button:hover {
 }
 
 #modal-texto {
-    white-space: pre-wrap;
     line-height: 1.5;
-    text-align: left;
+    text-align: center;
 }

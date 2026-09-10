@@ -28,43 +28,53 @@
                 <p><small>Passe o mouse para ver os detalhes. Arraste 2 ingredientes para o caldeirão.</small></p>
                 <div class="prateleira" id="prateleira">
                     <!-- Adicione a tag <img> e a tag <span> para cada ingrediente -->
-                    <div class="ingrediente" draggable="true" id="ing-1" title="Descrição do ingrediente 1">
+                    <div class="ingrediente" draggable="true" id="ing-1"
+                        data-descricao="Um pó brilhante que faz as coisas mudarem de forma.">
                         <img src="ing1.png" alt="Ingrediente 1">
                         <span>Pó de Fada</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-2" title="Descrição do ingrediente 2">
+                    <div class="ingrediente" draggable="true" id="ing-2"
+                        data-descricao="Uma raiz com cheiro fortíssimo. Desperta os sentidos, mas acelera o crescimento de pelos.">
                         <img src="ing2.png" alt="Ingrediente 2">
                         <span>Raiz Forte</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-3" title="Descrição do ingrediente 3">
+                    <div class="ingrediente" draggable="true" id="ing-3"
+                        data-descricao="Se macerados e misturados, vão melhorar a circulação sanguínea.">
                         <img src="ing3.png" alt="Ingrediente 3">
                         <span>Dentes de Troll</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-4" title="Descrição do ingrediente 4">
+                    <div class="ingrediente" draggable="true" id="ing-4"
+                        data-descricao="Uma pena de uma ave que cura todas as dores físicas.">
                         <img src="ing4.png" alt="Ingrediente 4">
                         <span>Pena de Fênix</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-5" title="Descrição do ingrediente 5">
+                    <div class="ingrediente" draggable="true" id="ing-5"
+                        data-descricao="Chifres de uma criatura capaz de ficar translúcida.">
                         <img src="ing5.png" alt="Ingrediente 5">
                         <span>Chifre Mágico</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-6" title="Descrição do ingrediente 6">
+                    <div class="ingrediente" draggable="true" id="ing-6"
+                        data-descricao="Uma flor difícil de conseguir devido a suas propriedades de camaleão.">
                         <img src="ing6.png" alt="Ingrediente 6">
                         <span>Flor da Lua</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-7" title="Descrição do ingrediente 7">
+                    <div class="ingrediente" draggable="true" id="ing-7"
+                        data-descricao="Cogumelo amorfo que muda a personalidade das pessoas.">
                         <img src="ing7.png" alt="Ingrediente 7">
                         <span>Cogumelo</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-8" title="Descrição do ingrediente 8">
+                    <div class="ingrediente" draggable="true" id="ing-8"
+                        data-descricao="Escama do dragão mais corajoso que existiu.">
                         <img src="ing8.png" alt="Ingrediente 8">
                         <span>Escama</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-9" title="Descrição do ingrediente 9">
+                    <div class="ingrediente" draggable="true" id="ing-9"
+                        data-descricao="Lágrimas de sereira. Serve para acalmar a ansiedade em momentos tensos.">
                         <img src="ing9.png" alt="Ingrediente 9">
-                        <span>Lágrima</span>
+                        <span>Lágrimas</span>
                     </div>
-                    <div class="ingrediente" draggable="true" id="ing-10" title="Descrição do ingrediente 10">
+                    <div class="ingrediente" draggable="true" id="ing-10"
+                        data-descricao="Folhas de uma árvore dourada extinta. Impulsionam o efeito da MAIORIA das poções.">
                         <img src="ing10.png" alt="Ingrediente 10">
                         <span>Folha de Ouro</span>
                     </div>
@@ -87,34 +97,32 @@
                         <p>🔴 Problemas Não Resolvidos: <strong id="pontos-falha">0</strong> / 3</p>
                     </section>
                 </section>
-                <hr>
 
                 <!-- Área de Mistura -->
-                    <section class="area-caldeirao">
-                        <h2>Caldeirão</h2>
-                        <!-- Wrapper que segura os Slots e o Caldeirão lado a lado -->
-                        <div class="wrapper-caldeirao">
-                            <!-- Slot do Ingrediente 1 -->
-                            <div id="slot-1" class="slot-ingrediente"></div>
-                            <!-- Caldeirão Central -->
-                            <div id="caldeirao" class="caldeirao-zona">
-                                <img id="imgCaldeirao" class="img_caldeirao" src="caldeirao.png" alt="Caldeirão" width="150" height="200">
-                            </div>
-                            <!-- Slot do Ingrediente 2 -->
-                            <div id="slot-2" class="slot-ingrediente"></div>
-
+                <section class="area-caldeirao">
+                    <h2>Caldeirão</h2>
+                    <!-- Wrapper que segura os Slots e o Caldeirão lado a lado -->
+                    <div class="wrapper-caldeirao">
+                        <!-- Slot do Ingrediente 1 -->
+                        <div id="slot-1" class="slot-ingrediente"></div>
+                        <!-- Caldeirão Central -->
+                        <div id="caldeirao" class="caldeirao-zona">
+                            <img id="imgCaldeirao" class="img_caldeirao" src="caldeirao.png" alt="Caldeirão" width="150"
+                                height="200">
                         </div>
+                        <!-- Slot do Ingrediente 2 -->
+                        <div id="slot-2" class="slot-ingrediente"></div>
 
-                        <button id="btn-misturar">Misturar Poção!</button>
-                    </section>
-                <hr>
+                    </div>
+
+                    <button id="btn-misturar">Misturar Poção!</button>
+                </section>
 
                 <!-- Botões de Controle -->
                 <section class="controles">
                     <button id="btn-como-jogar">Como Jogar</button>
                     <button id="btn-ir-casa" onclick="reiniciarJogo()">Ir Para Casa!</button>
                 </section>
-                <hr>
             </main>
         </div>
 
