@@ -14,6 +14,9 @@ O objetivo deste projeto é desenvolver um jogo digital utilizando exclusivament
 
 No Jogo das Poções, o jogador assume o papel do Mestre das Poções do Rei. Todos os dias, o Rei surge no seu laboratório com problemas inusitados — desde calvície mágica até dores de estômago causadas pela falta da visícula biliar. Assim, o jogador deve usar o seu conhecimento (e um pouco de dedução) para combinar os ingredientes certos no seu caldeirão e criar a poção perfeita para cada situação. *Mas cuidado!* Misturar as coisas erradas pode piorar ainda mais a vida do Rei.
 
+### [Link do Jogo](https://nobulipster.github.io/jogo-das-pocoes/page/)
+
+
 ## Instruções de Como Jogar
 
 <a href="#índice"><img align="right" width="15" height="15" src="./docs/up-arrow.png" alt="Voltar para topo"></a>
