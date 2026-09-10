@@ -59,8 +59,8 @@ A seguir estão listados os principais recursos empregados no desenvolvimento de
 ## Informações Requisitadas
 
 {
-"nome": "Jogo das Poções",
-"descricao": "No Jogo das Poções, o jogador assume o papel do Mestre das Poções do Rei. Todos os dias, o Rei surge no seu laboratório com problemas inusitados — desde calvície mágica até dores de estômago causadas pela falta da visícula biliar. Assim, o jogador deve usar o seu conhecimento (e um pouco de dedução) para combinar os ingredientes certos no seu caldeirão e criar a poção perfeita para cada situação. *Mas cuidado!* Misturar as coisas erradas pode piorar ainda mais a vida do Rei.",
-"autores": "Felipe Crisóstomo Silva Oliveira",
-"turma": "10A",
+    "nome": "Jogo das Poções",
+    "descricao": "No Jogo das Poções, o jogador assume o papel do Mestre das Poções do Rei. Todos os dias, o Rei surge no seu laboratório com problemas inusitados — desde calvície mágica até dores de estômago causadas pela falta da visícula biliar. Assim, o jogador deve usar o seu conhecimento (e um pouco de dedução) para combinar os ingredientes certos no seu caldeirão e criar a poção perfeita para cada situação. *Mas cuidado!* Misturar as coisas erradas pode piorar ainda mais a vida do Rei.",
+    "autores": "Felipe Crisóstomo Silva Oliveira",
+    "turma": "10A",
 }
