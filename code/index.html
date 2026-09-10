@@ -1,79 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jogo das Poções</title>
-        <link rel="shortcut icon" type="imagex/png" href="./icon.ico">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="conteiner">
-            <header>
-                <h1>Jogo das Poções</h1>        
-                <img src="potion-title-logo.png" alt="Logo Jogo das Poções" width="100" height="100">
-                <p>Bem-vindo, <b>Mestre das Poções</b>!</p>
-            </header>
-            <hr>
 
-            <!-- Placar do Jogo -->
-            <section class="placar">
-                <p>🟢 Problemas Resolvidos: <strong id="pontos-sucesso">0</strong> / 3</p>
-                <p>🔴 Problemas Não Resolvidos: <strong id="pontos-falha">0</strong> / 3</p>
-            </section>
-            <hr>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo das Poções</title>
+    <link rel="shortcut icon" type="imagex/png" href="./icon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-            <!-- Área do Problema -->
-            <section class="area-problema">
-                <h2>O Cliente Precisa de Ajuda!</h2>
-                <p id="texto-problema">Aguardando o cliente entrar na loja...</p>
-            </section>
-            <hr>
+<body>
+    <div class="conteiner">
+        <!-- Header -->
+        <header>
+            <h1>Jogo das Poções</h1>
+            <img src="potion-title-logo.png" alt="Logo Jogo das Poções" width="100" height="100">
+            <p>Bem-vindo, <b>Mestre das Poções</b>!</p>
+        </header>
+        <hr>
 
-            <!-- Prateleira com os 10 Ingredientes -->
+        <!-- Div para separar o lado dos ingredientes do caldeirão -->
+        <div class="layout-principal">
+
+            <!-- Lado Esquerdo: Prateleira com Ingredientes -->
             <section class="area-ingredientes">
                 <h2>Prateleira de Ingredientes</h2>
-                <p><em>Passe o mouse para ver os detalhes. Arraste 2 ingredientes para o caldeirão.</em></p>
+                <p><small>Passe o mouse para ver os detalhes. Arraste 2 ingredientes para o caldeirão.</small></p>
                 <div class="prateleira" id="prateleira">
-                    <div class="ingrediente" draggable="true" id="ing-1" title="Descrição do ingrediente 1">Ingrediente 1</div>
-                    <div class="ingrediente" draggable="true" id="ing-2" title="Descrição do ingrediente 2">Ingrediente 2</div>
-                    <div class="ingrediente" draggable="true" id="ing-3" title="Descrição do ingrediente 3">Ingrediente 3</div>
-                    <div class="ingrediente" draggable="true" id="ing-4" title="Descrição do ingrediente 4">Ingrediente 4</div>
-                    <div class="ingrediente" draggable="true" id="ing-5" title="Descrição do ingrediente 5">Ingrediente 5</div>
-                    <div class="ingrediente" draggable="true" id="ing-6" title="Descrição do ingrediente 6">Ingrediente 6</div>
-                    <div class="ingrediente" draggable="true" id="ing-7" title="Descrição do ingrediente 7">Ingrediente 7</div>
-                    <div class="ingrediente" draggable="true" id="ing-8" title="Descrição do ingrediente 8">Ingrediente 8</div>
-                    <div class="ingrediente" draggable="true" id="ing-9" title="Descrição do ingrediente 9">Ingrediente 9</div>
-                    <div class="ingrediente" draggable="true" id="ing-10" title="Descrição do ingrediente 10">Ingrediente 10</div>
+                    <!-- Adicione a tag <img> e a tag <span> para cada ingrediente -->
+                    <div class="ingrediente" draggable="true" id="ing-1" title="Descrição do ingrediente 1">
+                        <img src="ing1.png" alt="Ingrediente 1">
+                        <span>Pó de Fada</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-2" title="Descrição do ingrediente 2">
+                        <img src="ing2.png" alt="Ingrediente 2">
+                        <span>Raiz Forte</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-3" title="Descrição do ingrediente 3">
+                        <img src="ing3.png" alt="Ingrediente 3">
+                        <span>Dentes de Troll</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-4" title="Descrição do ingrediente 4">
+                        <img src="ing4.png" alt="Ingrediente 4">
+                        <span>Pena de Fênix</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-5" title="Descrição do ingrediente 5">
+                        <img src="ing5.png" alt="Ingrediente 5">
+                        <span>Chifre Mágico</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-6" title="Descrição do ingrediente 6">
+                        <img src="ing6.png" alt="Ingrediente 6">
+                        <span>Flor da Lua</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-7" title="Descrição do ingrediente 7">
+                        <img src="ing7.png" alt="Ingrediente 7">
+                        <span>Cogumelo</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-8" title="Descrição do ingrediente 8">
+                        <img src="ing8.png" alt="Ingrediente 8">
+                        <span>Escama</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-9" title="Descrição do ingrediente 9">
+                        <img src="ing9.png" alt="Ingrediente 9">
+                        <span>Lágrima</span>
+                    </div>
+                    <div class="ingrediente" draggable="true" id="ing-10" title="Descrição do ingrediente 10">
+                        <img src="ing10.png" alt="Ingrediente 10">
+                        <span>Folha de Ouro</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Área de Mistura -->
-            <section class="area-caldeirao">
-                <h2>Caldeirão</h2>
-                <div id="caldeirao" class="caldeirao-zona">
-                    <p>Jogue os ingredientes aqui</p>
-                </div>
-                <button id="btn-misturar">Misturar Poção!</button>
-            </section>
-            <hr>
+            <!-- Lado Direito -->
+            <main class="conteudo-jogo">
+                <!-- Painel de Informações -->
+                <section class="painel-info">
+                    <!-- Problema -->
+                    <section class="area-problema">
+                        <h2>O Rei Precisa de Ajuda!</h2>
+                        <p id="texto-problema">Aguardando o cliente entrar na loja...</p>
+                    </section>
 
-            <!-- Botões de Controle -->
-            <section class="controles">
-                <button id="btn-como-jogar">Como Jogar</button>
-                <button id="btn-ir-casa" onclick="reiniciarJogo()">Ir Para Casa!</button>
-            </section>
-            <hr>
+                    <!-- Placar -->
+                    <section class="placar">
+                        <p>🟢 Problemas Resolvidos: <strong id="pontos-sucesso">0</strong> / 3</p>
+                        <p>🔴 Problemas Não Resolvidos: <strong id="pontos-falha">0</strong> / 3</p>
+                    </section>
+                </section>
+                <hr>
 
-            <!-- Rodapé -->
-            <footer>
-                <p>
-                    Curioso sobre as antigas artes mágicas? Visite a página sobre 
-                    <a href="https://pt.wikipedia.org/wiki/Alquimia" target="_blank">Alquimia na Wikipedia</a>.
-                </p>
+                <!-- Área de Mistura -->
+                    <section class="area-caldeirao">
+                        <h2>Caldeirão</h2>
+                        <!-- Wrapper que segura os Slots e o Caldeirão lado a lado -->
+                        <div class="wrapper-caldeirao">
+                            <!-- Slot do Ingrediente 1 -->
+                            <div id="slot-1" class="slot-ingrediente"></div>
+                            <!-- Caldeirão Central -->
+                            <div id="caldeirao" class="caldeirao-zona">
+                                <img id="imgCaldeirao" class="img_caldeirao" src="caldeirao.png" alt="Caldeirão" width="150" height="200">
+                            </div>
+                            <!-- Slot do Ingrediente 2 -->
+                            <div id="slot-2" class="slot-ingrediente"></div>
+
+                        </div>
+
+                        <button id="btn-misturar">Misturar Poção!</button>
+                    </section>
+                <hr>
+
+                <!-- Botões de Controle -->
+                <section class="controles">
+                    <button id="btn-como-jogar">Como Jogar</button>
+                    <button id="btn-ir-casa" onclick="reiniciarJogo()">Ir Para Casa!</button>
+                </section>
+                <hr>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Curioso sobre as antigas artes mágicas? Visite a página sobre
+                <a href="https://pt.wikipedia.org/wiki/Alquimia" target="_blank">Alquimia na Wikipedia</a>.
+            </p>
             <p><b>Desenvolvido por:</b> Felipe Crisóstomo</p>
             <p><b>Copyright:</b> 2026</p>
+    </div>
+    <!-- O Modal Customizado -->
+    <div id="modal-jogo" class="modal-oculto">
+        <div class="modal-conteudo">
+            <h3 id="modal-titulo">Mensagem</h3>
+            <p id="modal-texto">Texto do modal aqui.</p>
+            <button id="btn-fechar-modal">Continuar</button>
         </div>
-        <script src="script.js"></script>
-    </body>
+    </div>
+    <script src="script.js"></script>
+</body>
+
 </html>
