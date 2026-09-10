@@ -1,36 +1,41 @@
 // 1. DADOS DO JOGO (Banco de Dados Interno)
 
-// Lista de problemas do Rei e os 2 ingredientes necessários (pelo ID) para resolver.
 const bancoProblemas = [
     {
         id: 1,
         texto: "O Rei está com uma calvície severa e exige seus cabelos de volta!",
-        solucao: ["ing-1", "ing-2"]
+        solucao: ["ing-1", "ing-2"],
+        imagemPocao: "pocao1.png"
     },
     {
         id: 2,
         texto: "O Rei comeu ensopado de dragão e está com fortes dores de estômago.",
-        solucao: ["ing-3", "ing-4"]
+        solucao: ["ing-3", "ing-4"],
+        imagemPocao: "pocao2.png"
     },
     {
         id: 3,
         texto: "O Rei quer uma poção para ficar invisível e fugir de suas obrigações.",
-        solucao: ["ing-5", "ing-6"]
+        solucao: ["ing-5", "ing-6"],
+        imagemPocao: "pocao3.png"
     },
     {
         id: 4,
         texto: "O Rei precisa de coragem para enfrentar o reino vizinho em um debate.",
-        solucao: ["ing-7", "ing-8"]
+        solucao: ["ing-7", "ing-8"],
+        imagemPocao: "pocao4.png"
     },
     {
         id: 5,
         texto: "O Rei não consegue dormir há dias e precisa de um sono profundo.",
-        solucao: ["ing-9", "ing-10"]
+        solucao: ["ing-9", "ing-10"],
+        imagemPocao: "pocao5.png"
     },
     {
         id: 6,
         texto: "O Rei acidentalmente se transformou em uma lhama! Faça-o voltar ao normal.",
-        solucao: ["ing-1", "ing-10"]
+        solucao: ["ing-1", "ing-10"],
+        imagemPocao: "pocao6.png"
     }
 ];
 
@@ -40,6 +45,7 @@ let pontosSucesso = 0;
 let pontosFalha = 0;
 let problemaAtual = null;
 let ingredientesNoCaldeirao = [];
+let problemasNaoUsados = [];
 
 // Elementos do DOM
 const textoProblema = document.getElementById("texto-problema");
@@ -53,14 +59,25 @@ const elementosIngredientes = document.querySelectorAll(".ingrediente");
 const modalJogo = document.getElementById("modal-jogo");
 const modalTitulo = document.getElementById("modal-titulo");
 const modalTexto = document.getElementById("modal-texto");
+const modalConteudo = document.querySelector(".modal-conteudo");
 const btnFecharModal = document.getElementById("btn-fechar-modal");
 let acaoAposModal = null;
 
 // Função para exibir o modal customizado
-function mostrarModal(titulo, mensagem, callback = null) {
+function mostrarModal(titulo, mensagem, callback = null, tipo = "normal") {
     modalTitulo.textContent = titulo;
     modalTexto.innerHTML = mensagem;
     acaoAposModal = callback;
+    
+    // Limpa os efeitos especiais passados (para não bugar)
+    modalConteudo.classList.remove("modal-vitoria", "modal-derrota");
+    
+    if (tipo === "vitoria") {
+        modalConteudo.classList.add("modal-vitoria");
+    } else if (tipo === "derrota") {
+        modalConteudo.classList.add("modal-derrota");
+    }
+
     modalJogo.classList.remove("modal-oculto");
 }
 
@@ -77,15 +94,22 @@ btnFecharModal.addEventListener("click", () => {
 function iniciarJogo() {
     pontosSucesso = 0;
     pontosFalha = 0;
+
+    // Cria uma cópia do banco de problemas usando o Spread Operator
+    problemasNaoUsados = [...bancoProblemas]; 
+    
     atualizarPlacar();
     sortearProblema();
     limparCaldeirao();
 }
 
 function sortearProblema() {
-    const indiceAleatorio = Math.floor(Math.random() * bancoProblemas.length);
-    problemaAtual = bancoProblemas[indiceAleatorio];
+    if (problemasNaoUsados.length === 0) {
+        problemasNaoUsados = [...bancoProblemas];
+    }
 
+    const indiceAleatorio = Math.floor(Math.random() * problemasNaoUsados.length);
+    problemaAtual = problemasNaoUsados.splice(indiceAleatorio, 1)[0];
     textoProblema.textContent = `"${problemaAtual.texto}"`;
 }
 
@@ -99,6 +123,11 @@ function atualizarPlacar() {
 elementosIngredientes.forEach(ingrediente => {
     ingrediente.addEventListener("dragstart", (evento) => {
         evento.dataTransfer.setData("text", evento.target.id);
+        const caminhoDaImagem = evento.target.querySelector("img").src;
+        const imagemFantasma = new Image();
+        imagemFantasma.src = caminhoDaImagem;
+        
+        evento.dataTransfer.setDragImage(imagemFantasma, 25, 25);
     });
 });
 
@@ -163,7 +192,7 @@ function limparCaldeirao() {
     document.getElementById("slot-2").innerHTML = "";
 }
 
-// Valida a poção quando clica no botão "Misturar Poção"
+// Valida a poção quando clica no botão Misturar Poção
 btnMisturar.addEventListener("click", () => {
     if (ingredientesNoCaldeirao.length !== 2) {
         mostrarModal("ATENÇÃO!", "Para fazer uma poção, o caldeirão precisa de exatamente 2 ingredientes!");
@@ -171,35 +200,44 @@ btnMisturar.addEventListener("click", () => {
     }
 
     // Verifica se os ingredientes escolhidos correspondem aos do problema atual
-    // Verifica se todos os ingredientes da solucao estão presentes no array do caldeirao
-    const pocaoCorreta = problemaAtual.solucao.every(ingrediente =>
+    const pocaoCorreta = problemaAtual.solucao.every(ingrediente => 
         ingredientesNoCaldeirao.includes(ingrediente)
     );
 
     if (pocaoCorreta) {
         pontosSucesso++;
-        mostrarModal("Sucesso!", "Parabéns! Você resolveu o problema do Rei!", verificarFimDeJogo);
+        atualizarPlacar();
+        const mensagemSucesso = `
+            Parabéns! Você resolveu o problema do Rei!<br><br>
+            <img src="${problemaAtual.imagemPocao}" alt="Poção Criada" style="width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(46, 139, 87, 0.8));"><br><br>
+            <strong>Poção Concluída!</strong>
+        `;
+        mostrarModal("Sucesso!", mensagemSucesso, verificarFimDeJogo);
     } else {
         pontosFalha++;
+        atualizarPlacar();
         mostrarModal("BOOM!", "Poção Errada! O Rei ficou muito zangado!", verificarFimDeJogo);
     }
-    atualizarPlacar();
-
-    atualizarPlacar();
-    verificarFimDeJogo();
 });
 
 // 6. CONDIÇÕES DE VITÓRIA E DERROTA
 
 function verificarFimDeJogo() {
     if (pontosSucesso >= 3) {
-        mostrarModal("VITÓRIA!", "Você é o(a) maior Mestre das Poções! Emprego garantido!", iniciarJogo);
-        iniciarJogo();
+        mostrarModal(
+            "🏆 VITÓRIA! 🏆", 
+            "<h3>Você é o(a) Maior Alquimista!</h3><br>O Rei está curado e te recompensou com um 'Obrigado'. Seu emprego está mais do que garantido!", 
+            iniciarJogo, 
+            "vitoria"
+        );
     } else if (pontosFalha >= 3) {
-        mostrarModal("DERROTA!", "O Rei revogou sua licença de Alquimista. Você foi demitido(a)!", iniciarJogo);
-        iniciarJogo(); 
+        mostrarModal(
+            "💥 DERROTA! 💥", 
+            "O Rei revogou sua licença e te baniu do reino. Você foi demitido(a)!", 
+            iniciarJogo, 
+            "derrota"
+        );
     } else {
-        // Se ainda não acabou o jogo
         limparCaldeirao();
         sortearProblema();
     }
@@ -207,9 +245,12 @@ function verificarFimDeJogo() {
 
 // Botão Ir Para Casa
 function reiniciarJogo() {
-    mostrarModal("Fim de Expediente!",
-                 "Você foi para casa tirar uma soneca e deixou o Rei esperando...");
-    iniciarJogo();
+    mostrarModal(
+        "Fim de Expediente!", 
+        "Você foi para casa tirar uma soneca e deixou o Rei esperando...", 
+        iniciarJogo,
+        "derrota"
+    );
 }
 
 document.getElementById("btn-como-jogar").addEventListener("click", () => {

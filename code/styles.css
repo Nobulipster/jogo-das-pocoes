@@ -101,11 +101,51 @@
 
 .placar, .area-problema {
     flex: 1;
-    background-color: #f4f4;
-    border: 2px solid #ccc;
+    background-color: #f0eada;
+    border: 2px solid #8b5a2b;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 10px rgba(139, 90, 43, 0.15), 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.placar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    gap: 15px;
+}
+
+.placar h3, .area-problema h2 {
+    color: #5c3a21;
+    border-bottom: 2px dashed #8b5a2b;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+#texto-problema {
+    font-size: 19px;
+    font-style: italic;
+    color: #332211;
+    line-height: 1.5;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+}
+
+.placar p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #332211;
+}
+
+#pontos-sucesso { 
+    color: #2e8b57;
+    font-size: 24px; 
+} 
+#pontos-falha { 
+    color: #b22222;
+    font-size: 24px; 
 }
 
 .area-problema {
@@ -152,34 +192,60 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #f7f3e8;
+    color: #332211;
+}
+
+header, footer {
+    background: linear-gradient(to bottom, #46332d, #2a1e1a);
+    color: #f0eada;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 header {
-    background-color: #46332d;
-    color: #FFF;
-    padding: 20px;
+    border-bottom: 4px solid #b8860b; 
 }
 
 footer {
-    background-color: #46332d;
-    color: #FFF;
-    padding: 20px;
+    border-top: 4px solid #b8860b;
+    margin-top: auto;
+}
+
+header h1 {
+    color: #d4af37;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    margin-bottom: 5px;
+    font-size: 2.5em;
+    letter-spacing: 2px;
 }
 
 button {
-    background-color: #39F;
-    color: white;
-    cursor: pointer;
+    background: linear-gradient(to bottom, #8b5a2b, #5c3a21);
+    color: #f0eada;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
     font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    margin-top: 5px;
+    border: 2px solid #3d2616;
+    border-radius: 8px; 
+    padding: 10px 25px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: all 0.1s ease-in-out;
 }
 
 button:hover {
-    background-color: #17D;
+    background: linear-gradient(to bottom, #9d6833, #6a4427);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.3);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.4), inset 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .controles {
@@ -225,4 +291,45 @@ button:hover {
 #modal-texto {
     line-height: 1.5;
     text-align: center;
+}
+
+/* EFEITOS DE FIM DE JOGO */
+
+@keyframes pulsoVitoria {
+    0% { box-shadow: 0 0 15px rgba(46, 139, 87, 0.5); transform: scale(1); }
+    50% { box-shadow: 0 0 40px rgba(46, 139, 87, 1); transform: scale(1.05); }
+    100% { box-shadow: 0 0 15px rgba(46, 139, 87, 0.5); transform: scale(1); }
+}
+
+@keyframes tremorDerrota {
+    0% { box-shadow: 0 0 15px rgba(178, 34, 34, 0.5); transform: translateX(0); }
+    25% { transform: translateX(-15px) rotate(-2deg); }
+    50% { box-shadow: 0 0 50px rgba(178, 34, 34, 1); transform: translateX(15px) rotate(2deg); }
+    75% { transform: translateX(-15px) rotate(-2deg); }
+    100% { box-shadow: 0 0 15px rgba(178, 34, 34, 0.5); transform: translateX(0); }
+}
+
+/* Classes Injetadas via JavaScript */
+.modal-vitoria {
+    max-width: 600px !important;
+    border-color: #2e8b57 !important;
+    background-color: #e8f5e9 !important;
+    animation: pulsoVitoria 1.5s infinite !important;
+}
+
+.modal-vitoria h3 {
+    color: #2e8b57 !important;
+    font-size: 2.5em;
+}
+
+.modal-derrota {
+    max-width: 600px !important;
+    border-color: #b22222 !important;
+    background-color: #ffebee !important;
+    animation: tremorDerrota 0.4s ease-in-out !important;
+}
+
+.modal-derrota h3 {
+    color: #b22222 !important;
+    font-size: 2.5em;
 }
